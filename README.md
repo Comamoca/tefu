@@ -1,3 +1,3 @@
 # tefu
 
-Describe your project here.
+Local testing tool for Techful. 
