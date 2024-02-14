@@ -1,0 +1,27 @@
+name: pytest
+
+on:
+  push:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  pytest:
+    name: Run tests with pytest
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install rye
+        uses: sksat/setup-rye@v0.8.0
+      - name: Setup pytest
+        run: rye sync
+      - name: Run test
+        run: rye run pytest
+      - name: Check coverage
+        run: rye run pytest --cov=src/ tests/
