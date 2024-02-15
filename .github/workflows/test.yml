@@ -7,21 +7,32 @@ on:
       - dev
 
 jobs:
-  pytest:
+  setup:
     name: Run tests with pytest
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9, 3.10]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install rye
-        uses: sksat/setup-rye@v0.8.0
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Setup rye
+        uses: eifinger/setup-rye@v1
       - name: Setup pytest
-        run: rye sync
-      - name: Run test
-        run: rye run pytest
-      - name: Check coverage
-        run: rye run pytest --cov=src/ tests/
+        run: |
+          rye pin 3.11.5
+          rye sync
+
+      - name: Run pytest
+        run: |
+          set -o pipefail
+          rye run pytest --junitxml=pytest.xml --cov-report=term-missing --cov=src tests/ | tee pytest-coverage.txt
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml
+
+
