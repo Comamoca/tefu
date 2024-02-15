@@ -1,28 +1,27 @@
 <div align="center">
 
-![Last commit](https://img.shields.io/github/last-commit/Comamoca/tefu?style=flat-square)
-![Repository Stars](https://img.shields.io/github/stars/Comamoca/tefu?style=flat-square)
-![Issues](https://img.shields.io/github/issues/Comamoca/tefu?style=flat-square)
-![Open Issues](https://img.shields.io/github/issues-raw/Comamoca/tefu?style=flat-square)
-![Bug Issues](https://img.shields.io/github/issues/Comamoca/tefu/bug?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/Comamoca/baserepo?style=flat-square)
+![Repository Stars](https://img.shields.io/github/stars/Comamoca/baserepo?style=flat-square)
+![Issues](https://img.shields.io/github/issues/Comamoca/baserepo?style=flat-square)
+![Open Issues](https://img.shields.io/github/issues-raw/Comamoca/baserepo?style=flat-square)
+![Bug Issues](https://img.shields.io/github/issues/Comamoca/baserepo/bug?style=flat-square)
 
 <img src="https://emoji2svg.deno.dev/api/🦊" alt="eyecatch" height="100">
 
-# tefu
+# 🦊 tefu
 
-Local testing tool for Techful. 
+Techful向けのローカルテストツール
 
 <br>
 <br>
-
 
 </div>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:center">🍔English</th>
-      <th style="text-align:center"><a href="README.ja.md">🍡日本語</a></th>
+      <th style="text-align:center">🍡日本語</th>
+      <th style="text-align:center"><a href="README.md">🍔English</a></th>
     </tr>
   </thead>
 </table>
@@ -31,10 +30,11 @@ Local testing tool for Techful.
 
 </div>
 
-## 🚀 How to use
+## 🚀 使い方
 
-First, you must create testing file name to `tefu.toml`.
-`tefu.toml` rule is below.
+
+まず始めに、`tefu.toml`というテスト用のファイルを用意します。
+`tefu.toml`の書き方は以下の通りです。
 
 ```toml
 [[case]]
@@ -50,13 +50,13 @@ test
 """
 ```
 
-`input` is data to input program.
-`output` is data that the program is expected to output.
+`input`はプログラムに入力される値です。
+`output`はプログラムが出力することが期待される値です。
 
-`input` and `output` data **must use multi line sring**.
+`input`や`output`は**複数行文字列である必要があります**。
 
-If you can prepare `tefu.toml`, run `tefu` command.
-Then output like below.
+`tefu.toml`ファイルが用意できたら`tefu`コマンドを実行します。
+実行すると以下のような出力が表示されるはずです。
 
 ```
 ╒══════════╤══════════╤══════════╤══════════╕
@@ -76,10 +76,9 @@ Then output like below.
 
 `pip install tefu`
 
+## ⛏️   開発
 
-## ⛏️   Development
-
-This project use [`rye`](https://rye-up.com/).
+このプロジェクトは[`rye`](https://rye-up.com/)を採用しています。
 
 ```sh
 git clone https://github.com/Comamoca/tefu
@@ -93,11 +92,12 @@ rye run tefu
 # run test
 rye run pytest
 ```
+
 ## 📝 Todo
 
-- [ ] Add exception handling.
+- [ ] 例外処理の追加。
 
-## 📜 License
+## 📜 ライセンス
 
 MIT
 
@@ -105,6 +105,6 @@ MIT
 
 - [tabulate](https://github.com/gregbanks/python-tabulate)
 
-## 👏 Affected projects
+## 👏 影響を受けたプロジェクト
 
 - [pytest](https://github.com/pytest-dev/pytest)
