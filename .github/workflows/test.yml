@@ -6,6 +6,8 @@ on:
     branches:
       - dev
 
+permissions: write-all
+
 jobs:
   setup:
     name: Run tests with pytest
@@ -29,10 +31,10 @@ jobs:
         run: |
           set -o pipefail
           rye run pytest --junitxml=pytest.xml --cov-report=term-missing --cov=src tests/ | tee pytest-coverage.txt
+
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: ./pytest-coverage.txt
           junitxml-path: ./pytest.xml
-
 
